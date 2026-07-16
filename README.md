@@ -102,11 +102,6 @@ Roughly 1–2 hours per 200 questions on a T4 at 4-bit.
 - TF-IDF similarity is surface-level and does not guarantee retrieved examples share the
   answer format or entity type of the target question.
 
-## Citation
-
-The accompanying paper is a CLEF 2026 BioASQ working note (not accepted; preprint pending).
-Until then, cite this repository directly.
-
 ## Licence
 
 Code: MIT (see `LICENSE`). The BioASQ dataset is covered by the organisers' own terms and is
