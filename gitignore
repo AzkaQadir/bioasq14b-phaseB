@@ -1,0 +1,41 @@
+# ---------------------------------------------------------------
+# BioASQ data — DO NOT COMMIT.
+# Distributed under the BioASQ terms of use; redistribution is not
+# permitted. Register at participants-area.bioasq.org to obtain it.
+# ---------------------------------------------------------------
+training14b.json
+BioASQ-training14b/
+BioASQ-testing14b/
+BioASQ-task14bPhaseB-testset*
+*.json.gz
+data/
+
+# Model predictions & submissions (contain BioASQ question/answer text)
+submission_batch*.json
+phaseB_submission.json
+dev_predictions.pkl
+dev_qualitative.csv
+
+# Metrics-only outputs ARE safe to commit — see results/
+# (results/*.json holds aggregate scores, no BioASQ content)
+
+# Notebook cruft
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Model weights / caches
+*.safetensors
+*.bin
+.cache/
+huggingface/
+
+# OS
+.DS_Store
+Thumbs.db

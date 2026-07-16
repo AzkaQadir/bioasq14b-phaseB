@@ -1,0 +1,37 @@
+{
+  "_comment": "Aggregate scores only. Computed on a 200-question holdout carved from the BioASQ 14b TRAINING set using a local reimplementation of the official D4.1 metrics. NOT official leaderboard scores and NOT comparable to test-batch results.",
+  "evaluation": {
+    "split": "last 200 questions of training14b.json",
+    "training_set_size": 5729,
+    "holdout_size": 200,
+    "holdout_type_counts": {"yesno": 52, "factoid": 56, "list": 48, "summary": 44},
+    "metrics_source": "BioASQ D4.1 evaluation specification (local reimplementation)"
+  },
+  "model": {
+    "name": "mistralai/Mistral-7B-Instruct-v0.3",
+    "quantization": "4-bit NF4 (BitsAndBytes), double quant, bfloat16 compute",
+    "hardware": "1x NVIDIA T4 (16 GB)",
+    "decoding": "greedy"
+  },
+  "primary": {
+    "use_few_shot": false,
+    "yesno":   {"macro_F1": 0.9549, "official": true},
+    "factoid": {"MRR": 0.4113, "official": true},
+    "list":    {"mean_F1": 0.3427, "official": true},
+    "ideal":   {"ROUGE_2": 0.2565, "ROUGE_SU4": 0.2517, "official": true}
+  },
+  "few_shot_ablation": {
+    "use_few_shot": true,
+    "retrieval": "per-type TF-IDF, cosine similarity, top-N (2 yesno/ideal, 3 factoid/list)",
+    "yesno":   {"macro_F1": 0.9063},
+    "factoid": {"MRR": 0.3765},
+    "list":    {"mean_F1": 0.3750},
+    "ideal":   {"ROUGE_2": 0.2507, "ROUGE_SU4": 0.2451}
+  },
+  "caveats": [
+    "Per-type n is roughly 50; small deltas (especially ROUGE) are within noise.",
+    "No confidence intervals computed.",
+    "Post-processing fallback rates (e.g. yesno default-to-yes) are not yet instrumented.",
+    "The four submitted test batches used use_few_shot=true, not the primary system."
+  ]
+}
