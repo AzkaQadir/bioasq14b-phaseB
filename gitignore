@@ -16,7 +16,7 @@ phaseB_submission.json
 dev_predictions.pkl
 dev_qualitative.csv
 
-# Metrics-only outputs ARE safe to commit — see results/
+# Metrics-only outputs — see results/
 # (results/*.json holds aggregate scores, no BioASQ content)
 
 # Notebook cruft
